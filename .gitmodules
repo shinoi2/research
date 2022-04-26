@@ -1,9 +1,3 @@
-[submodule "app/plate_detector/License_Plate_Detection_Pytorch"]
-	path = app/plate_detector/License_Plate_Detection_Pytorch
-	url = git@github.com:shinoi2/License_Plate_Detection_Pytorch.git
-[submodule "app/light_detector/light_YOLOX"]
-	path = app/light_detector/light_YOLOX
-	url = git@github.com:shinoi2/light_YOLOX.git
 [submodule "app/object_detector/detectron2"]
 	path = app/object_detector/detectron2
 	url = git@github.com:shinoi2/detectron2.git
