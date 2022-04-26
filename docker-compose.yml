@@ -74,7 +74,7 @@ services:
     entrypoint:
       - bash
       - -c
-      - python3 -m paddle_serving_server.serve --model vehicle_server --port 9395 --gpu_id 0
+      - python3 -m paddle_serving_server.serve --model face_server --port 9395 --gpu_id 0
 
   mask_detection:
     image: shinoi2/pji-research:paddleserving
