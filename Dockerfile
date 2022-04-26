@@ -36,7 +36,7 @@ RUN python3 -m pip install pip --upgrade && \
         paddlespeech \
         paddle-serving-client==0.8.3 \
         paddle-serving-app==0.8.3 \
-        torch && \
+        torch \
         yolox && \
     pip install paddlepaddle-gpu==2.2.2.post112 -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html
 
