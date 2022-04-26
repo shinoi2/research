@@ -35,16 +35,12 @@ RUN python3 -m pip install pip --upgrade && \
         paddlehub==2.2.0 \
         paddlespeech \
         paddle-serving-client==0.8.3 \
-        paddle-serving-app==0.8.3 && \
+        paddle-serving-app==0.8.3 \
+        yolox && \
     pip install paddlepaddle-gpu==2.2.2.post112 -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html
 
 # ADD light.pth /root/
 ADD paddle.tar.gz /root/
-
-RUN hub install pyramidbox_lite_server==1.2.0 && \
-    hub install pyramidbox_lite_server_mask==1.3.1 && \
-    hub install yolov3_darknet53_pedestrian==1.0.2 && \
-    hub install yolov3_darknet53_vehicles==1.0.2
 
 # COPY ./app/light_detector/light_YOLOX /root/light_detector/light_YOLOX
 
