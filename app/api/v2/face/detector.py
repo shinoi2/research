@@ -1,4 +1,3 @@
-import paddlehub as hub
 from common import get_image_v2
 from flask import jsonify
 from . import face_bp
