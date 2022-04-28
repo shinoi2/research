@@ -15,11 +15,11 @@ _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='light.proto',
-  package='',
+  package='LightDetection',
   syntax='proto3',
   serialized_options=b'\200\001\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0blight.proto\"\x1e\n\x0cLightRequest\x12\x0e\n\x06images\x18\x01 \x03(\x0c\"@\n\x04Rect\x12\x0c\n\x04left\x18\x01 \x01(\x02\x12\r\n\x05right\x18\x02 \x01(\x02\x12\x0b\n\x03top\x18\x03 \x01(\x02\x12\x0e\n\x06\x62ottom\x18\x04 \x01(\x02\"+\n\x05Light\x12\r\n\x05score\x18\x01 \x01(\x02\x12\x13\n\x04rect\x18\x02 \x01(\x0b\x32\x05.Rect\" \n\x06Lights\x12\x16\n\x06lights\x18\x01 \x03(\x0b\x32\x06.Light\"+\n\rLightResponse\x12\x1a\n\tresponses\x18\x01 \x03(\x0b\x32\x07.Lights2:\n\x0cLightService\x12*\n\x07predict\x12\r.LightRequest\x1a\x0e.LightResponse\"\x00\x42\x03\x80\x01\x01\x62\x06proto3'
+  serialized_pb=b'\n\x0blight.proto\x12\x0eLightDetection\"\x1e\n\x0cLightRequest\x12\x0e\n\x06images\x18\x01 \x03(\x0c\"@\n\x04Rect\x12\x0c\n\x04left\x18\x01 \x01(\x02\x12\r\n\x05right\x18\x02 \x01(\x02\x12\x0b\n\x03top\x18\x03 \x01(\x02\x12\x0e\n\x06\x62ottom\x18\x04 \x01(\x02\":\n\x05Light\x12\r\n\x05score\x18\x01 \x01(\x02\x12\"\n\x04rect\x18\x02 \x01(\x0b\x32\x14.LightDetection.Rect\"/\n\x06Lights\x12%\n\x06lights\x18\x01 \x03(\x0b\x32\x15.LightDetection.Light\":\n\rLightResponse\x12)\n\tresponses\x18\x01 \x03(\x0b\x32\x16.LightDetection.Lights2X\n\x0cLightService\x12H\n\x07predict\x12\x1c.LightDetection.LightRequest\x1a\x1d.LightDetection.LightResponse\"\x00\x42\x03\x80\x01\x01\x62\x06proto3'
 )
 
 
@@ -27,14 +27,14 @@ DESCRIPTOR = _descriptor.FileDescriptor(
 
 _LIGHTREQUEST = _descriptor.Descriptor(
   name='LightRequest',
-  full_name='LightRequest',
+  full_name='LightDetection.LightRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='images', full_name='LightRequest.images', index=0,
+      name='images', full_name='LightDetection.LightRequest.images', index=0,
       number=1, type=12, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -52,42 +52,42 @@ _LIGHTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15,
-  serialized_end=45,
+  serialized_start=31,
+  serialized_end=61,
 )
 
 
 _RECT = _descriptor.Descriptor(
   name='Rect',
-  full_name='Rect',
+  full_name='LightDetection.Rect',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='left', full_name='Rect.left', index=0,
+      name='left', full_name='LightDetection.Rect.left', index=0,
       number=1, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='right', full_name='Rect.right', index=1,
+      name='right', full_name='LightDetection.Rect.right', index=1,
       number=2, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='top', full_name='Rect.top', index=2,
+      name='top', full_name='LightDetection.Rect.top', index=2,
       number=3, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='bottom', full_name='Rect.bottom', index=3,
+      name='bottom', full_name='LightDetection.Rect.bottom', index=3,
       number=4, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
@@ -105,28 +105,28 @@ _RECT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=47,
-  serialized_end=111,
+  serialized_start=63,
+  serialized_end=127,
 )
 
 
 _LIGHT = _descriptor.Descriptor(
   name='Light',
-  full_name='Light',
+  full_name='LightDetection.Light',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='score', full_name='Light.score', index=0,
+      name='score', full_name='LightDetection.Light.score', index=0,
       number=1, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='rect', full_name='Light.rect', index=1,
+      name='rect', full_name='LightDetection.Light.rect', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -144,21 +144,21 @@ _LIGHT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=113,
-  serialized_end=156,
+  serialized_start=129,
+  serialized_end=187,
 )
 
 
 _LIGHTS = _descriptor.Descriptor(
   name='Lights',
-  full_name='Lights',
+  full_name='LightDetection.Lights',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='lights', full_name='Lights.lights', index=0,
+      name='lights', full_name='LightDetection.Lights.lights', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -176,21 +176,21 @@ _LIGHTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=158,
-  serialized_end=190,
+  serialized_start=189,
+  serialized_end=236,
 )
 
 
 _LIGHTRESPONSE = _descriptor.Descriptor(
   name='LightResponse',
-  full_name='LightResponse',
+  full_name='LightDetection.LightResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='responses', full_name='LightResponse.responses', index=0,
+      name='responses', full_name='LightDetection.LightResponse.responses', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -208,8 +208,8 @@ _LIGHTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=192,
-  serialized_end=235,
+  serialized_start=238,
+  serialized_end=296,
 )
 
 _LIGHT.fields_by_name['rect'].message_type = _RECT
@@ -225,35 +225,35 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 LightRequest = _reflection.GeneratedProtocolMessageType('LightRequest', (_message.Message,), {
   'DESCRIPTOR' : _LIGHTREQUEST,
   '__module__' : 'light_pb2'
-  # @@protoc_insertion_point(class_scope:LightRequest)
+  # @@protoc_insertion_point(class_scope:LightDetection.LightRequest)
   })
 _sym_db.RegisterMessage(LightRequest)
 
 Rect = _reflection.GeneratedProtocolMessageType('Rect', (_message.Message,), {
   'DESCRIPTOR' : _RECT,
   '__module__' : 'light_pb2'
-  # @@protoc_insertion_point(class_scope:Rect)
+  # @@protoc_insertion_point(class_scope:LightDetection.Rect)
   })
 _sym_db.RegisterMessage(Rect)
 
 Light = _reflection.GeneratedProtocolMessageType('Light', (_message.Message,), {
   'DESCRIPTOR' : _LIGHT,
   '__module__' : 'light_pb2'
-  # @@protoc_insertion_point(class_scope:Light)
+  # @@protoc_insertion_point(class_scope:LightDetection.Light)
   })
 _sym_db.RegisterMessage(Light)
 
 Lights = _reflection.GeneratedProtocolMessageType('Lights', (_message.Message,), {
   'DESCRIPTOR' : _LIGHTS,
   '__module__' : 'light_pb2'
-  # @@protoc_insertion_point(class_scope:Lights)
+  # @@protoc_insertion_point(class_scope:LightDetection.Lights)
   })
 _sym_db.RegisterMessage(Lights)
 
 LightResponse = _reflection.GeneratedProtocolMessageType('LightResponse', (_message.Message,), {
   'DESCRIPTOR' : _LIGHTRESPONSE,
   '__module__' : 'light_pb2'
-  # @@protoc_insertion_point(class_scope:LightResponse)
+  # @@protoc_insertion_point(class_scope:LightDetection.LightResponse)
   })
 _sym_db.RegisterMessage(LightResponse)
 
@@ -262,17 +262,17 @@ DESCRIPTOR._options = None
 
 _LIGHTSERVICE = _descriptor.ServiceDescriptor(
   name='LightService',
-  full_name='LightService',
+  full_name='LightDetection.LightService',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=237,
-  serialized_end=295,
+  serialized_start=298,
+  serialized_end=386,
   methods=[
   _descriptor.MethodDescriptor(
     name='predict',
-    full_name='LightService.predict',
+    full_name='LightDetection.LightService.predict',
     index=0,
     containing_service=None,
     input_type=_LIGHTREQUEST,
