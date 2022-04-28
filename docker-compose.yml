@@ -111,8 +111,8 @@ services:
       - "/home/pji/workspace/research/app/plate_detector:/root/plate_detector"
       - "/home/pji/workspace/research/app/face_recognition:/root/face_recognition"
       - "/home/pji/workspace/research/app/server.py:/root/server.py"
-    # extra_hosts:
-    #   - "test.chinapji.com:192.168.66.247"
+    extra_hosts:
+      - "test.chinapji.com:192.168.66.247"
   ngnix-server:
     image: nginx:1.13
     ports: 
