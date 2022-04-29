@@ -10,6 +10,11 @@ services:
     restart: always
     volumes:
       - "/home/pji/workspace/light_Docker:/workspace"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
 
   lprnet_detection:
     image: shinoi2/pji-research:lprnet
