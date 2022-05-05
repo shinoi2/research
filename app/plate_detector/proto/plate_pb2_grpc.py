@@ -15,7 +15,7 @@ class PlateServiceStub(object):
             channel: A grpc.Channel.
         """
         self.predict = channel.unary_unary(
-                '/PlateService/predict',
+                '/PlateDetection.PlateService/predict',
                 request_serializer=plate__pb2.PlateRequest.SerializeToString,
                 response_deserializer=plate__pb2.PlateResponse.FromString,
                 )
@@ -40,7 +40,7 @@ def add_PlateServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'PlateService', rpc_method_handlers)
+            'PlateDetection.PlateService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -59,7 +59,7 @@ class PlateService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PlateService/predict',
+        return grpc.experimental.unary_unary(request, target, '/PlateDetection.PlateService/predict',
             plate__pb2.PlateRequest.SerializeToString,
             plate__pb2.PlateResponse.FromString,
             options, channel_credentials,

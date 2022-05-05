@@ -7,18 +7,20 @@ class PlateDetectionClient:
         channel = grpc.insecure_channel(url)
         self.client = plate_pb2_grpc.PlateServiceStub(channel = channel)
     def predict(self, image):
-        image = cv2.imencode('.jpg', image)[1].tobytes()
-        request = plate_pb2.PlateRequest(image=image)
+        img = cv2.imencode('.jpg', image)[1].tobytes()
+        request = plate_pb2.PlateRequest(image=img)
         responses = self.client.predict(request)
         data = []
         for response in responses.Plates:
+            width = float(response.rect.right) - float(response.rect.left)
+            height = float(response.rect.bottom) - float(response.rect.top)
             data.append({
                 "score" : float(response.score),
                 "rect" : {
-                    "left" : float(response.rect.left),
-                    "top" : float(response.rect.top),
-                    "right" : float(response.rect.right),
-                    "bottom" : float(response.rect.bottom)
+                    "left" : max((float(response.rect.left) - 0.1*width), 0),
+                    "top" : max((float(response.rect.top) - 0.1*height), 0),
+                    "right" : min((float(response.rect.right) + 0.1*width), image.shape[1]),
+                    "bottom" : min((float(response.rect.bottom) + 0.1*height), image.shape[1])
                 },
                 "point" : {
                     "topleft" :
