@@ -14,7 +14,7 @@ class FaceDetector:
         ])
         self.client = Client()
         self.thresholds = thresholds
-        self.client.load_client_config("./face_detector/face_client/serving_client_conf.prototxt")
+        self.client.load_client_config("./face_detector/lite_face_client/serving_client_conf.prototxt")
         if isinstance(url, str):
             self.client.connect([url])
         if isinstance(url, list):
@@ -26,23 +26,24 @@ class FaceDetector:
             feed={
                 "image": im,
             },
-            fetch=["detection_output_0.tmp_0"],
+            fetch=["save_infer_model/scale_0"],
             batch=False)
         result = []
         image_h = image.shape[0]
         image_w = image.shape[1]
-        for data in fetch_map['detection_output_0.tmp_0']:
-            if float(data[1]) <= self.thresholds:
-                continue
-            result.append({
-                "score": float(data[1]),
-                "rect":{
-                    "left": float(max(data[2]*image_w, 0)),
-                    "top": float(max(data[3]*image_h, 0)),
-                    "right": float(max(data[4]*image_w, 0)),
-                    "bottom": float(max(data[5]*image_h, 0))
-                }
-            })
+        if fetch_map['save_infer_model/scale_0'][0][0] != -1.0: 
+            for data in fetch_map['save_infer_model/scale_0']:
+                if float(data[1]) <= self.thresholds:
+                    continue
+                result.append({
+                    "score": float(data[1]),
+                    "rect":{
+                        "left": float(max(data[2]*image_w, 0)),
+                        "top": float(max(data[3]*image_h, 0)),
+                        "right": float(max(data[4]*image_w, 0)),
+                        "bottom": float(max(data[5]*image_h, 0))
+                    }
+                })
 
 
         return result

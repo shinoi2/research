@@ -8,8 +8,6 @@ services:
   light_detection:
     image: shinoi2/pji-research:light
     restart: always
-    volumes:
-      - "/home/pji/workspace/light_Docker:/workspace"
     deploy:
       resources:
         reservations:
@@ -49,7 +47,7 @@ services:
     entrypoint:
       - bash
       - -c
-      - python3 -m paddle_serving_server.serve --model vehicle_server --port 9393 --gpu_id 0
+      - python3 -m paddle_serving_server.serve --model vehicle_server --port 9393 --gpu_id 0  --thread 10
 
   pedestrian_detection:
     image: shinoi2/pji-research:paddleserving
@@ -64,7 +62,7 @@ services:
     entrypoint:
       - bash
       - -c
-      - python3 -m paddle_serving_server.serve --model pedestrian_server --port 9394 --gpu_id 0
+      - python3 -m paddle_serving_server.serve --model pedestrian_server --port 9394 --gpu_id 0  --thread 10
 
   face_detection:
     image: shinoi2/pji-research:paddleserving
@@ -75,11 +73,11 @@ services:
             - capabilities: [gpu]
     restart: always
     volumes:
-      - "/home/pji/workspace/ServingDocker/face_server:/home/face_server"
+      - "/home/pji/workspace/ServingDocker/lite_face_server:/home/face_server"
     entrypoint:
       - bash
       - -c
-      - python3 -m paddle_serving_server.serve --model face_server --port 9395 --gpu_id 0
+      - python3 -m paddle_serving_server.serve --model face_server --port 9395 --gpu_id 0 --thread 10
 
   mask_detection:
     image: shinoi2/pji-research:paddleserving
@@ -94,35 +92,14 @@ services:
     entrypoint:
       - bash
       - -c
-      - python3 -m paddle_serving_server.serve --model mask_server --port 9396 --gpu_id 0
+      - python3 -m paddle_serving_server.serve --model mask_server --port 9396 --gpu_id 0 --thread 10
   
   http_api_service:
-    image: shinoi2/pji-research:http_api_service
+    image: shinoi2/pji-research:http_api_service-gunicorn
     environment:
       - GRPC_POLL_STRATEGY=poll
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities: [gpu]
     restart: always
-    volumes:
-      - "/home/pji/workspace/research/app/api:/root/api"
-      - "/home/pji/workspace/research/app/vehicle_detector:/root/vehicle_detector"
-      - "/home/pji/workspace/research/app/pedestrian_detector:/root/pedestrian_detector"
-      - "/home/pji/workspace/research/app/mask_detector:/root/mask_detector"
-      - "/home/pji/workspace/research/app/face_detector:/root/face_detector"
-      - "/home/pji/workspace/research/app/light_detector:/root/light_detector"
-      - "/home/pji/workspace/research/app/plate_detector:/root/plate_detector"
-      - "/home/pji/workspace/research/app/face_recognition:/root/face_recognition"
-      - "/home/pji/workspace/research/app/server.py:/root/server.py"
-    extra_hosts:
-      - "test.chinapji.com:192.168.66.247"
-  ngnix-server:
-    image: nginx:1.13
     ports: 
       - "5000:5000"
-    volumes: 
-      - './nginx.conf:/etc/nginx/nginx.conf'
-    depends_on: 
-      - chat-http_api_service-
+    extra_hosts:
+      - "test.chinapji.com:192.168.66.247"

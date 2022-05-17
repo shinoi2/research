@@ -32,13 +32,14 @@ class MaskDetector:
             fetch=["save_infer_model/scale_0"],
             batch=True)
         result = []
-        for data in fetch_map['save_infer_model/scale_0']:
-            mask = True
-            if float(data[1]) <= float(data[0]):
-                mask = False
-            result.append({
-                "mask": mask,
-                "score": float(data[1])
-            })
+        if fetch_map['save_infer_model/scale_0'][0][0] != -1.0:
+            for data in fetch_map['save_infer_model/scale_0']:
+                mask = True
+                if float(data[1]) <= float(data[0]):
+                    mask = False
+                result.append({
+                    "mask": mask,
+                    "score": float(data[1])
+                })
 
         return result
