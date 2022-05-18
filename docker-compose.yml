@@ -14,21 +14,8 @@ services:
           devices:
             - capabilities: [gpu]
 
-  lprnet_detection:
-    image: shinoi2/pji-research:lprnet
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities: [gpu]
-
   plate_detection:
-    image: shinoi2/pji-research:plate
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities: [gpu]
+    image: shinoi2/pji-research:hyperlpr
 
   vehicle_detection:
     image: shinoi2/pji-research:vehicle
