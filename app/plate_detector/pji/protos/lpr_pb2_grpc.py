@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from pji.protos import lpr_pb2 as pji_dot_protos_dot_lpr__pb2
+from . import lpr_pb2 as pji_dot_protos_dot_lpr__pb2
 
 
 class LicenseRecognitionEngineStub(object):

@@ -1,8 +1,7 @@
 import grpc
 import sys
-sys.path.append('/home/pji/workspace/HyperLPR/Prj-Linux/hyperlpr/build')
-from pji.protos import lpr_pb2
-from pji.protos import lpr_pb2_grpc
+from .pji.protos import lpr_pb2
+from .pji.protos import lpr_pb2_grpc
 
 def readfile(image):
     with open(image, 'rb') as f:
