@@ -30,12 +30,14 @@ RUN ln -s /usr/local/cuda-11.2/targets/x86_64-linux/lib/libcublas.so.11 ./usr/lo
 RUN python3 -m pip install pip --upgrade && \
     pip install flask \
         flask-cors \
+        gevent \
         grpcio \
         minio \
         paddlehub==2.2.0 \
         paddlespeech \
         paddle-serving-client==0.8.3 \
         paddle-serving-app==0.8.3 \
+        pyopenss \
         torch>=1.7 && \
     pip install yolox && \
     pip install paddlepaddle-gpu==2.2.2.post112 -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html
@@ -59,4 +61,4 @@ RUN wget https://paddle-serving.bj.bcebos.com/others/centos_ssl.tar && \
 
 COPY ./app /root/
 
-ENTRYPOINT cd /root && python3 server.py
+ENTRYPOINT cd /root && gunicorn server:app -c /root/gunicorn/gunicorn.conf.py
