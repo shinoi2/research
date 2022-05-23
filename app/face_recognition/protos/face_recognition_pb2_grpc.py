@@ -39,6 +39,11 @@ class FaceRecognitionEngineStub(object):
                 request_serializer=protos_dot_face__recognition__pb2.DeleteRequest.SerializeToString,
                 response_deserializer=protos_dot_face__recognition__pb2.UploadReply.FromString,
                 )
+        self.Detect = channel.unary_unary(
+                '/FaceRecognition.FaceRecognitionEngine/Detect',
+                request_serializer=protos_dot_face__recognition__pb2.DetectRequest.SerializeToString,
+                response_deserializer=protos_dot_face__recognition__pb2.DetectReply.FromString,
+                )
 
 
 class FaceRecognitionEngineServicer(object):
@@ -74,6 +79,12 @@ class FaceRecognitionEngineServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Detect(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_FaceRecognitionEngineServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -101,6 +112,11 @@ def add_FaceRecognitionEngineServicer_to_server(servicer, server):
                     servicer.Delete,
                     request_deserializer=protos_dot_face__recognition__pb2.DeleteRequest.FromString,
                     response_serializer=protos_dot_face__recognition__pb2.UploadReply.SerializeToString,
+            ),
+            'Detect': grpc.unary_unary_rpc_method_handler(
+                    servicer.Detect,
+                    request_deserializer=protos_dot_face__recognition__pb2.DetectRequest.FromString,
+                    response_serializer=protos_dot_face__recognition__pb2.DetectReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -194,5 +210,22 @@ class FaceRecognitionEngine(object):
         return grpc.experimental.unary_unary(request, target, '/FaceRecognition.FaceRecognitionEngine/Delete',
             protos_dot_face__recognition__pb2.DeleteRequest.SerializeToString,
             protos_dot_face__recognition__pb2.UploadReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Detect(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/FaceRecognition.FaceRecognitionEngine/Detect',
+            protos_dot_face__recognition__pb2.DetectRequest.SerializeToString,
+            protos_dot_face__recognition__pb2.DetectReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

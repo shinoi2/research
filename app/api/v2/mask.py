@@ -1,12 +1,12 @@
+import cv2
 from common import get_image_v2
 from flask import jsonify
 from . import v2_bp
-from face_detector import FaceDetector
+from face_recognition import FaceRecognitionClient
 from mask_detector import MaskDetector
 
-
+face_recognition_client = FaceRecognitionClient()
 mask_detector = MaskDetector()
-face_detector = FaceDetector()
 @v2_bp.route('/mask', methods=['POST'])
 def mask():
     image = get_image_v2()
@@ -15,7 +15,9 @@ def mask():
             "msg": "image 或 url 参数不存在",
             "code": 1
         })
-    results = face_detector.predict(image=image)
+    img = cv2.imencode('.jpg', image)[1].tostring()
+    count, results = face_recognition_client.detect(image=img)
+    # results = face_detector.predict(image=image)
     data = []
     mask_count = no_mask_count = 0
     if results:

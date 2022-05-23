@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\'com.pji.cloud.research.face.recognitionB\017FaceRecognitionP\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1dprotos/face_recognition.proto\x12\x0f\x46\x61\x63\x65Recognition\"3\n\x0b\x46\x61\x63\x65\x46\x65\x61ture\x12\x0f\n\x07\x66\x65\x61ture\x18\x01 \x01(\x0c\x12\x13\n\x0b\x66\x65\x61tureSize\x18\x02 \x01(\x05\"Y\n\x04\x46\x61\x63\x65\x12\x0e\n\x06\x66\x61\x63\x65Id\x18\x01 \x01(\t\x12\x0e\n\x06repoId\x18\x02 \x01(\t\x12\x31\n\x0b\x66\x61\x63\x65\x46\x65\x61ture\x18\x03 \x01(\x0b\x32\x1c.FaceRecognition.FaceFeature\">\n\rUploadRequest\x12\x0e\n\x06\x66\x61\x63\x65Id\x18\x01 \x01(\t\x12\x0e\n\x06repoId\x18\x02 \x01(\t\x12\r\n\x05image\x18\x03 \x01(\x0c\".\n\rSearchRequest\x12\x0e\n\x06repoId\x18\x01 \x01(\t\x12\r\n\x05image\x18\x02 \x01(\x0c\"0\n\x0e\x43ompareRequest\x12\x0e\n\x06image1\x18\x01 \x01(\x0c\x12\x0e\n\x06image2\x18\x02 \x01(\x0c\"\x1a\n\x0bUploadReply\x12\x0b\n\x03rtn\x18\x01 \x01(\x05\",\n\x0bSimilarFace\x12\x0e\n\x06\x66\x61\x63\x65Id\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x01\"N\n\x0bSearchReply\x12\x0b\n\x03rtn\x18\x01 \x01(\x05\x12\x32\n\x0csimilarFaces\x18\x02 \x03(\x0b\x32\x1c.FaceRecognition.SimilarFace\"*\n\x0c\x43ompareReply\x12\x0b\n\x03rtn\x18\x01 \x01(\x05\x12\r\n\x05score\x18\x02 \x01(\x01\"/\n\rDeleteRequest\x12\x0e\n\x06\x66\x61\x63\x65Id\x18\x01 \x01(\t\x12\x0e\n\x06repoId\x18\x02 \x01(\t2\x8c\x03\n\x15\x46\x61\x63\x65RecognitionEngine\x12H\n\x06Upload\x12\x1e.FaceRecognition.UploadRequest\x1a\x1c.FaceRecognition.UploadReply\"\x00\x12H\n\x06Search\x12\x1e.FaceRecognition.SearchRequest\x1a\x1c.FaceRecognition.SearchReply\"\x00\x12K\n\x07\x43ompare\x12\x1f.FaceRecognition.CompareRequest\x1a\x1d.FaceRecognition.CompareReply\"\x00\x12H\n\x06Update\x12\x1e.FaceRecognition.UploadRequest\x1a\x1c.FaceRecognition.UploadReply\"\x00\x12H\n\x06\x44\x65lete\x12\x1e.FaceRecognition.DeleteRequest\x1a\x1c.FaceRecognition.UploadReply\"\x00\x42<\n\'com.pji.cloud.research.face.recognitionB\x0f\x46\x61\x63\x65RecognitionP\x01\x62\x06proto3'
+  serialized_pb=b'\n\x1dprotos/face_recognition.proto\x12\x0f\x46\x61\x63\x65Recognition\"3\n\x0b\x46\x61\x63\x65\x46\x65\x61ture\x12\x0f\n\x07\x66\x65\x61ture\x18\x01 \x01(\x0c\x12\x13\n\x0b\x66\x65\x61tureSize\x18\x02 \x01(\x05\"Y\n\x04\x46\x61\x63\x65\x12\x0e\n\x06\x66\x61\x63\x65Id\x18\x01 \x01(\t\x12\x0e\n\x06repoId\x18\x02 \x01(\t\x12\x31\n\x0b\x66\x61\x63\x65\x46\x65\x61ture\x18\x03 \x01(\x0b\x32\x1c.FaceRecognition.FaceFeature\">\n\rUploadRequest\x12\x0e\n\x06\x66\x61\x63\x65Id\x18\x01 \x01(\t\x12\x0e\n\x06repoId\x18\x02 \x01(\t\x12\r\n\x05image\x18\x03 \x01(\x0c\".\n\rSearchRequest\x12\x0e\n\x06repoId\x18\x01 \x01(\t\x12\r\n\x05image\x18\x02 \x01(\x0c\"0\n\x0e\x43ompareRequest\x12\x0e\n\x06image1\x18\x01 \x01(\x0c\x12\x0e\n\x06image2\x18\x02 \x01(\x0c\"\x1e\n\rDetectRequest\x12\r\n\x05image\x18\x01 \x01(\x0c\"\x1a\n\x0bUploadReply\x12\x0b\n\x03rtn\x18\x01 \x01(\x05\",\n\x0bSimilarFace\x12\x0e\n\x06\x66\x61\x63\x65Id\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x01\"N\n\x0bSearchReply\x12\x0b\n\x03rtn\x18\x01 \x01(\x05\x12\x32\n\x0csimilarFaces\x18\x02 \x03(\x0b\x32\x1c.FaceRecognition.SimilarFace\"*\n\x0c\x43ompareReply\x12\x0b\n\x03rtn\x18\x01 \x01(\x05\x12\r\n\x05score\x18\x02 \x01(\x01\"/\n\rDeleteRequest\x12\x0e\n\x06\x66\x61\x63\x65Id\x18\x01 \x01(\t\x12\x0e\n\x06repoId\x18\x02 \x01(\t\"@\n\x04Rect\x12\x0c\n\x04left\x18\x01 \x01(\x02\x12\r\n\x05right\x18\x02 \x01(\x02\x12\x0b\n\x03top\x18\x03 \x01(\x02\x12\x0e\n\x06\x62ottom\x18\x04 \x01(\x02\"B\n\x0b\x44\x65tectReply\x12\r\n\x05\x63ount\x18\x01 \x01(\x05\x12$\n\x05rects\x18\x02 \x03(\x0b\x32\x15.FaceRecognition.Rect2\xd6\x03\n\x15\x46\x61\x63\x65RecognitionEngine\x12H\n\x06Upload\x12\x1e.FaceRecognition.UploadRequest\x1a\x1c.FaceRecognition.UploadReply\"\x00\x12H\n\x06Search\x12\x1e.FaceRecognition.SearchRequest\x1a\x1c.FaceRecognition.SearchReply\"\x00\x12K\n\x07\x43ompare\x12\x1f.FaceRecognition.CompareRequest\x1a\x1d.FaceRecognition.CompareReply\"\x00\x12H\n\x06Update\x12\x1e.FaceRecognition.UploadRequest\x1a\x1c.FaceRecognition.UploadReply\"\x00\x12H\n\x06\x44\x65lete\x12\x1e.FaceRecognition.DeleteRequest\x1a\x1c.FaceRecognition.UploadReply\"\x00\x12H\n\x06\x44\x65tect\x12\x1e.FaceRecognition.DetectRequest\x1a\x1c.FaceRecognition.DetectReply\"\x00\x42<\n\'com.pji.cloud.research.face.recognitionB\x0f\x46\x61\x63\x65RecognitionP\x01\x62\x06proto3'
 )
 
 
@@ -234,6 +234,38 @@ _COMPAREREQUEST = _descriptor.Descriptor(
 )
 
 
+_DETECTREQUEST = _descriptor.Descriptor(
+  name='DetectRequest',
+  full_name='FaceRecognition.DetectRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='image', full_name='FaceRecognition.DetectRequest.image', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=356,
+  serialized_end=386,
+)
+
+
 _UPLOADREPLY = _descriptor.Descriptor(
   name='UploadReply',
   full_name='FaceRecognition.UploadReply',
@@ -261,8 +293,8 @@ _UPLOADREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=356,
-  serialized_end=382,
+  serialized_start=388,
+  serialized_end=414,
 )
 
 
@@ -300,8 +332,8 @@ _SIMILARFACE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=384,
-  serialized_end=428,
+  serialized_start=416,
+  serialized_end=460,
 )
 
 
@@ -339,8 +371,8 @@ _SEARCHREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=430,
-  serialized_end=508,
+  serialized_start=462,
+  serialized_end=540,
 )
 
 
@@ -378,8 +410,8 @@ _COMPAREREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=510,
-  serialized_end=552,
+  serialized_start=542,
+  serialized_end=584,
 )
 
 
@@ -417,22 +449,118 @@ _DELETEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=554,
-  serialized_end=601,
+  serialized_start=586,
+  serialized_end=633,
+)
+
+
+_RECT = _descriptor.Descriptor(
+  name='Rect',
+  full_name='FaceRecognition.Rect',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='left', full_name='FaceRecognition.Rect.left', index=0,
+      number=1, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='right', full_name='FaceRecognition.Rect.right', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='top', full_name='FaceRecognition.Rect.top', index=2,
+      number=3, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='bottom', full_name='FaceRecognition.Rect.bottom', index=3,
+      number=4, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=635,
+  serialized_end=699,
+)
+
+
+_DETECTREPLY = _descriptor.Descriptor(
+  name='DetectReply',
+  full_name='FaceRecognition.DetectReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='count', full_name='FaceRecognition.DetectReply.count', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='rects', full_name='FaceRecognition.DetectReply.rects', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=701,
+  serialized_end=767,
 )
 
 _FACE.fields_by_name['faceFeature'].message_type = _FACEFEATURE
 _SEARCHREPLY.fields_by_name['similarFaces'].message_type = _SIMILARFACE
+_DETECTREPLY.fields_by_name['rects'].message_type = _RECT
 DESCRIPTOR.message_types_by_name['FaceFeature'] = _FACEFEATURE
 DESCRIPTOR.message_types_by_name['Face'] = _FACE
 DESCRIPTOR.message_types_by_name['UploadRequest'] = _UPLOADREQUEST
 DESCRIPTOR.message_types_by_name['SearchRequest'] = _SEARCHREQUEST
 DESCRIPTOR.message_types_by_name['CompareRequest'] = _COMPAREREQUEST
+DESCRIPTOR.message_types_by_name['DetectRequest'] = _DETECTREQUEST
 DESCRIPTOR.message_types_by_name['UploadReply'] = _UPLOADREPLY
 DESCRIPTOR.message_types_by_name['SimilarFace'] = _SIMILARFACE
 DESCRIPTOR.message_types_by_name['SearchReply'] = _SEARCHREPLY
 DESCRIPTOR.message_types_by_name['CompareReply'] = _COMPAREREPLY
 DESCRIPTOR.message_types_by_name['DeleteRequest'] = _DELETEREQUEST
+DESCRIPTOR.message_types_by_name['Rect'] = _RECT
+DESCRIPTOR.message_types_by_name['DetectReply'] = _DETECTREPLY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 FaceFeature = _reflection.GeneratedProtocolMessageType('FaceFeature', (_message.Message,), {
@@ -470,6 +598,13 @@ CompareRequest = _reflection.GeneratedProtocolMessageType('CompareRequest', (_me
   })
 _sym_db.RegisterMessage(CompareRequest)
 
+DetectRequest = _reflection.GeneratedProtocolMessageType('DetectRequest', (_message.Message,), {
+  'DESCRIPTOR' : _DETECTREQUEST,
+  '__module__' : 'protos.face_recognition_pb2'
+  # @@protoc_insertion_point(class_scope:FaceRecognition.DetectRequest)
+  })
+_sym_db.RegisterMessage(DetectRequest)
+
 UploadReply = _reflection.GeneratedProtocolMessageType('UploadReply', (_message.Message,), {
   'DESCRIPTOR' : _UPLOADREPLY,
   '__module__' : 'protos.face_recognition_pb2'
@@ -505,6 +640,20 @@ DeleteRequest = _reflection.GeneratedProtocolMessageType('DeleteRequest', (_mess
   })
 _sym_db.RegisterMessage(DeleteRequest)
 
+Rect = _reflection.GeneratedProtocolMessageType('Rect', (_message.Message,), {
+  'DESCRIPTOR' : _RECT,
+  '__module__' : 'protos.face_recognition_pb2'
+  # @@protoc_insertion_point(class_scope:FaceRecognition.Rect)
+  })
+_sym_db.RegisterMessage(Rect)
+
+DetectReply = _reflection.GeneratedProtocolMessageType('DetectReply', (_message.Message,), {
+  'DESCRIPTOR' : _DETECTREPLY,
+  '__module__' : 'protos.face_recognition_pb2'
+  # @@protoc_insertion_point(class_scope:FaceRecognition.DetectReply)
+  })
+_sym_db.RegisterMessage(DetectReply)
+
 
 DESCRIPTOR._options = None
 
@@ -515,8 +664,8 @@ _FACERECOGNITIONENGINE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=604,
-  serialized_end=1000,
+  serialized_start=770,
+  serialized_end=1240,
   methods=[
   _descriptor.MethodDescriptor(
     name='Upload',
@@ -565,6 +714,16 @@ _FACERECOGNITIONENGINE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_DELETEREQUEST,
     output_type=_UPLOADREPLY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Detect',
+    full_name='FaceRecognition.FaceRecognitionEngine.Detect',
+    index=5,
+    containing_service=None,
+    input_type=_DETECTREQUEST,
+    output_type=_DETECTREPLY,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
