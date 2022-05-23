@@ -56,3 +56,21 @@ class FaceRecognitionClient:
         request.repoId = repoid
         reply = self.client.Delete(request)
         return reply.rtn
+
+    def detect(self, image):
+        request = face_recognition_pb2.DetectRequest()
+        result = []
+        request.image = image
+        reply = self.client.Detect(request)
+        count = reply.count
+        for rect in reply.rects:
+            result.append({
+                'score': 1.0,
+                'rect': {
+                    'left': rect.left,
+                    'top': rect.top,
+                    'right': rect.right,
+                    'bottom': rect.bottom                    
+                }
+            })
+        return count, result 

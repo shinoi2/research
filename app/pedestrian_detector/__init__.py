@@ -30,17 +30,18 @@ class PedestrianDetector:
             fetch=["@HUB_yolov3_darknet53_pedestrian@multiclass_nms.tmp_0"],
             batch=False)
         result = []
-        for data in fetch_map["@HUB_yolov3_darknet53_pedestrian@multiclass_nms.tmp_0"]:
-            if float(data[1]) <= self.thresholds:
-                continue
-            result.append({
-                "score": float(data[1]),
-                "rect":{
-                    "left": float(data[2]),
-                    "top": float(data[3]),
-                    "right": float(data[4]),
-                    "bottom": float(data[5])
-                }
-            })
+        if fetch_map['@HUB_yolov3_darknet53_pedestrian@multiclass_nms.tmp_0'][0][0] != -1.0: 
+            for data in fetch_map["@HUB_yolov3_darknet53_pedestrian@multiclass_nms.tmp_0"]:
+                if float(data[1]) <= self.thresholds:
+                    continue
+                result.append({
+                    "score": float(data[1]),
+                    "rect":{
+                        "left": float(data[2]),
+                        "top": float(data[3]),
+                        "right": float(data[4]),
+                        "bottom": float(data[5])
+                    }
+                })
         return result
 

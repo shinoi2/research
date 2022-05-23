@@ -39,17 +39,18 @@ class VehicleDetector:
             fetch=["@HUB_yolov3_darknet53_vehicles@multiclass_nms.tmp_0"],
             batch=False)
         result = []
-        for cls, score, left, top, right, bottom in fetch_map["@HUB_yolov3_darknet53_vehicles@multiclass_nms.tmp_0"]:
-            if score <= self.thresholds:
-                continue
-            result.append({
-                "label": self.label_map[int(cls)],
-                "score": float(score),
-                "rect": {
-                    "left": float(left),
-                    "top": float(top),
-                    "right": float(right),
-                    "bottom": float(bottom)
-                }
-            })
+        if fetch_map['@HUB_yolov3_darknet53_vehicles@multiclass_nms.tmp_0'][0][0] != -1.0:
+            for cls, score, left, top, right, bottom in fetch_map["@HUB_yolov3_darknet53_vehicles@multiclass_nms.tmp_0"]:
+                if score <= self.thresholds:
+                    continue
+                result.append({
+                    "label": self.label_map[int(cls)],
+                    "score": float(score),
+                    "rect": {
+                        "left": float(left),
+                        "top": float(top),
+                        "right": float(right),
+                        "bottom": float(bottom)
+                    }
+                })
         return result

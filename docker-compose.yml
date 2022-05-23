@@ -28,7 +28,7 @@ services:
     entrypoint:
       - bash
       - -c
-      - python3 -m paddle_serving_server.serve --model vehicle_server --port 9393 --gpu_id 0
+      - python3 -m paddle_serving_server.serve --model vehicle_server --port 9393 --gpu_id 0  --thread 10
 
   pedestrian_detection:
     image: shinoi2/pji-research:pedestrian
@@ -41,20 +41,7 @@ services:
     entrypoint:
       - bash
       - -c
-      - python3 -m paddle_serving_server.serve --model pedestrian_server --port 9394 --gpu_id 0
-
-  face_detection:
-    image: shinoi2/pji-research:face
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities: [gpu]
-    restart: always
-    entrypoint:
-      - bash
-      - -c
-      - python3 -m paddle_serving_server.serve --model face_server --port 9395 --gpu_id 0
+      - python3 -m paddle_serving_server.serve --model pedestrian_server --port 9394 --gpu_id 0  --thread 10
 
   mask_detection:
     image: shinoi2/pji-research:mask
@@ -67,10 +54,10 @@ services:
     entrypoint:
       - bash
       - -c
-      - python3 -m paddle_serving_server.serve --model mask_server --port 9396 --gpu_id 0
+      - python3 -m paddle_serving_server.serve --model mask_server --port 9396 --gpu_id 0 --thread 10
   
   http_api_service:
-    image: shinoi2/pji-research:http_api_service
+    image: shinoi2/pji-research:http_api_service-gunicorn
     environment:
       - GRPC_POLL_STRATEGY=poll
     deploy:
@@ -78,8 +65,6 @@ services:
         reservations:
           devices:
             - capabilities: [gpu]
-    volumes:
-      - ./app/server.py:/root/server.py
     restart: always
     ports:
       - "5000:5000"
@@ -88,5 +73,7 @@ services:
     depends_on:
       - face_recognition
       - light_detection
-      - plate_detection
-      - face_detection
+      - vehicle_detection
+      - plate_detection 
+      - pedestrian_detection
+      - mask_detection
