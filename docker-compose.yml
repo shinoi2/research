@@ -78,14 +78,15 @@ services:
         reservations:
           devices:
             - capabilities: [gpu]
+    volumes:
+      - ./app/server.py:/root/server.py
     restart: always
+    ports:
+      - "5000:5000"
     extra_hosts:
       - "test.chinapji.com:192.168.66.247"
-  ngnix-server:
-    image: nginx:1.13
-    ports: 
-      - "5000:5000"
-    volumes: 
-      - './nginx.conf:/etc/nginx/nginx.conf'
-    depends_on: 
-      - chat-http_api_service-
+    depends_on:
+      - face_recognition
+      - light_detection
+      - plate_detection
+      - face_detection
