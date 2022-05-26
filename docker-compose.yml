@@ -1,12 +1,12 @@
 version: "3"
 services:
   face_recognition:
-    image: shinoi2/pji-research:face_recognition
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_face_recognition:20220526
     volumes:
       - "/home/face_recognition/data:/data"
 
   light_detection:
-    image: shinoi2/pji-research:light
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_light:20220526
     restart: always
     deploy:
       resources:
@@ -15,10 +15,10 @@ services:
             - capabilities: [gpu]
 
   plate_detection:
-    image: shinoi2/pji-research:hyperlpr
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_plate:20220526
 
   vehicle_detection:
-    image: shinoi2/pji-research:vehicle
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_vehicle:20220526
     deploy:
       resources:
         reservations:
@@ -28,10 +28,10 @@ services:
     entrypoint:
       - bash
       - -c
-      - python3 -m paddle_serving_server.serve --model vehicle_server --port 9393 --gpu_id 0  --thread 10
+      - python3 -m paddle_serving_server.serve --model vehicle_server --port 9393 --gpu_id 0  --thread 16
 
   pedestrian_detection:
-    image: shinoi2/pji-research:pedestrian
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_pedestrian:20220526
     deploy:
       resources:
         reservations:
@@ -41,10 +41,10 @@ services:
     entrypoint:
       - bash
       - -c
-      - python3 -m paddle_serving_server.serve --model pedestrian_server --port 9394 --gpu_id 0  --thread 10
+      - python3 -m paddle_serving_server.serve --model pedestrian_server --port 9394 --gpu_id 0  --thread 32
 
   mask_detection:
-    image: shinoi2/pji-research:mask
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_mask:20220526
     deploy:
       resources:
         reservations:
@@ -54,10 +54,10 @@ services:
     entrypoint:
       - bash
       - -c
-      - python3 -m paddle_serving_server.serve --model mask_server --port 9396 --gpu_id 0 --thread 10
+      - python3 -m paddle_serving_server.serve --model mask_server --port 9396 --gpu_id 0 --thread 32
   
   http_api_service:
-    image: shinoi2/pji-research:http_api_service-gunicorn
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_http_api_service:20220526
     environment:
       - GRPC_POLL_STRATEGY=poll
     deploy:
@@ -68,8 +68,6 @@ services:
     restart: always
     ports:
       - "5000:5000"
-    extra_hosts:
-      - "test.chinapji.com:192.168.66.247"
     depends_on:
       - face_recognition
       - light_detection
