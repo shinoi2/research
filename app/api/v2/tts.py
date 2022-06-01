@@ -1,12 +1,11 @@
 import uuid
-import paddle
 from flask import jsonify, request, current_app
-from paddlespeech.cli import TTSExecutor
 from common.minio import upload_file
 from . import v2_bp
+from tts import TTSClient
 
 
-tts_executor = TTSExecutor()
+client = TTSClient()
 @v2_bp.route('/tts', methods=['POST'])
 def tts():
     content = request.json
@@ -16,23 +15,7 @@ def tts():
             "msg": "text 参数不存在",
             "code": 1
         })
-    wav_file = tts_executor(
-        text=text,
-        output='/tmp/' + str(uuid.uuid4()) + '.wav',
-        am='fastspeech2_csmsc',
-        am_config=None,
-        am_ckpt=None,
-        am_stat=None,
-        spk_id=0,
-        phones_dict=None,
-        tones_dict=None,
-        speaker_dict=None,
-        voc='pwgan_csmsc',
-        voc_config=None,
-        voc_ckpt=None,
-        voc_stat=None,
-        lang='zh',
-        device=paddle.get_device())
+    wav_file = client(text)
     current_app.logger.info('Wave file has been generated: {}'.format(wav_file))
 
     url = upload_file(wav_file)

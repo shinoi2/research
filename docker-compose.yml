@@ -68,6 +68,15 @@ services:
       - -c
       - python3 -m paddle_serving_server.serve --model mask_server --port 9396 --gpu_id 0 --thread 32
 
+  speech_server:
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_speech
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    restart: always
+
   http_api_service:
     image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_http_api_service:20220526
     environment:
@@ -88,3 +97,4 @@ services:
       - plate_detection 
       - pedestrian_detection
       - mask_detection
+      - speech_server
