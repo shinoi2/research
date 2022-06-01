@@ -3,7 +3,7 @@ services:
   face_recognition:
     image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_face_recognition:20220526
     volumes:
-      - "/home/face_recognition/data:/data"
+      - "./face_recognition_data:/data"
     environment:
       - APP_ID=CAv7zJJJHGxninFhZfq4uKuZL2uV2UYiFA1bcoKfV3yi
       - SDK_KEY=3JK6qHZFpLdzzd1xNpjVJugPK2UuYywxBAMkMUTa2FAZ
@@ -78,7 +78,13 @@ services:
           devices:
             - capabilities: [gpu]
     restart: always
-    volumes:
-      - "/home/pji/workspace/research/app:/root/"
     ports:
       - "5000:5000"
+    depends_on:
+      - face_recognition
+      - light_detection
+      - object_detection
+      - vehicle_detection
+      - plate_detection 
+      - pedestrian_detection
+      - mask_detection
