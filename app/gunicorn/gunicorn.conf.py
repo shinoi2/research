@@ -1,4 +1,4 @@
-workers = 16
+workers = 32
 bind = '0.0.0.0:5000'
 # worker_class = 'gevent'
 proc_name = 'gunicorn.pid'

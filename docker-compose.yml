@@ -67,7 +67,7 @@ services:
       - bash
       - -c
       - python3 -m paddle_serving_server.serve --model mask_server --port 9396 --gpu_id 0 --thread 32
-  
+
   http_api_service:
     image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_http_api_service:20220526
     environment:
@@ -82,10 +82,3 @@ services:
       - "/home/pji/workspace/research/app:/root/"
     ports:
       - "5000:5000"
-    # depends_on:
-    #   - face_recognition
-    #   - light_detection
-    #   - vehicle_detection
-    #   - plate_detection 
-    #   - pedestrian_detection
-    #   - mask_detection
