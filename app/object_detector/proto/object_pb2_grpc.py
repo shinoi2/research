@@ -2,10 +2,10 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import lprnet_pb2 as lprnet__pb2
+from . import object_pb2 as object__pb2
 
 
-class LprnetServiceStub(object):
+class ObjectServiceStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -15,13 +15,13 @@ class LprnetServiceStub(object):
             channel: A grpc.Channel.
         """
         self.predict = channel.unary_unary(
-                '/LprnetService/predict',
-                request_serializer=lprnet__pb2.LprnetRequest.SerializeToString,
-                response_deserializer=lprnet__pb2.LprnetResponse.FromString,
+                '/ObjectDetection.ObjectService/predict',
+                request_serializer=object__pb2.ObjectRequest.SerializeToString,
+                response_deserializer=object__pb2.ObjectResponse.FromString,
                 )
 
 
-class LprnetServiceServicer(object):
+class ObjectServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def predict(self, request, context):
@@ -31,21 +31,21 @@ class LprnetServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_LprnetServiceServicer_to_server(servicer, server):
+def add_ObjectServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'predict': grpc.unary_unary_rpc_method_handler(
                     servicer.predict,
-                    request_deserializer=lprnet__pb2.LprnetRequest.FromString,
-                    response_serializer=lprnet__pb2.LprnetResponse.SerializeToString,
+                    request_deserializer=object__pb2.ObjectRequest.FromString,
+                    response_serializer=object__pb2.ObjectResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'LprnetService', rpc_method_handlers)
+            'ObjectDetection.ObjectService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class LprnetService(object):
+class ObjectService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
@@ -59,8 +59,8 @@ class LprnetService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/LprnetService/predict',
-            lprnet__pb2.LprnetRequest.SerializeToString,
-            lprnet__pb2.LprnetResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/ObjectDetection.ObjectService/predict',
+            object__pb2.ObjectRequest.SerializeToString,
+            object__pb2.ObjectResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

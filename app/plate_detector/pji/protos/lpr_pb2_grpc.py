@@ -2,10 +2,10 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import plate_pb2 as plate__pb2
+from . import lpr_pb2 as pji_dot_protos_dot_lpr__pb2
 
 
-class PlateServiceStub(object):
+class LicenseRecognitionEngineStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -14,42 +14,42 @@ class PlateServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.predict = channel.unary_unary(
-                '/PlateDetection.PlateService/predict',
-                request_serializer=plate__pb2.PlateRequest.SerializeToString,
-                response_deserializer=plate__pb2.PlateResponse.FromString,
+        self.Recognition = channel.unary_unary(
+                '/LicenseRecognition.LicenseRecognitionEngine/Recognition',
+                request_serializer=pji_dot_protos_dot_lpr__pb2.Request.SerializeToString,
+                response_deserializer=pji_dot_protos_dot_lpr__pb2.Response.FromString,
                 )
 
 
-class PlateServiceServicer(object):
+class LicenseRecognitionEngineServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def predict(self, request, context):
+    def Recognition(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_PlateServiceServicer_to_server(servicer, server):
+def add_LicenseRecognitionEngineServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'predict': grpc.unary_unary_rpc_method_handler(
-                    servicer.predict,
-                    request_deserializer=plate__pb2.PlateRequest.FromString,
-                    response_serializer=plate__pb2.PlateResponse.SerializeToString,
+            'Recognition': grpc.unary_unary_rpc_method_handler(
+                    servicer.Recognition,
+                    request_deserializer=pji_dot_protos_dot_lpr__pb2.Request.FromString,
+                    response_serializer=pji_dot_protos_dot_lpr__pb2.Response.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'PlateDetection.PlateService', rpc_method_handlers)
+            'LicenseRecognition.LicenseRecognitionEngine', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class PlateService(object):
+class LicenseRecognitionEngine(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def predict(request,
+    def Recognition(request,
             target,
             options=(),
             channel_credentials=None,
@@ -59,8 +59,8 @@ class PlateService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PlateDetection.PlateService/predict',
-            plate__pb2.PlateRequest.SerializeToString,
-            plate__pb2.PlateResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/LicenseRecognition.LicenseRecognitionEngine/Recognition',
+            pji_dot_protos_dot_lpr__pb2.Request.SerializeToString,
+            pji_dot_protos_dot_lpr__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

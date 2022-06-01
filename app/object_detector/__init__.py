@@ -1,1 +1,1 @@
-from .main import ObjectDetector
+from .object_client import ObjectDetectionClient

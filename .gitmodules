@@ -1,3 +1,0 @@
-[submodule "app/object_detector/detectron2"]
-	path = app/object_detector/detectron2
-	url = git@github.com:shinoi2/detectron2.git
