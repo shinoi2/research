@@ -1,4 +1,4 @@
-FROM ubuntu20.04
+FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive TZ=Asia/Shanghai LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64" CUDA_VISIBLE_DEVICES=0
 
