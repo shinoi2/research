@@ -1,8 +1,0 @@
-FROM shinoi2/pji-research:http_api_service
-
-RUN pip install gevent pyopenssl -i https://pypi.tuna.tsinghua.edu.cn/simple
-
-COPY ./app /root/
-
-ENTRYPOINT cd /root && gunicorn server:app -c /root/gunicorn/gunicorn.conf.py
-
