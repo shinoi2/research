@@ -3,10 +3,22 @@ services:
   face_recognition:
     image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_face_recognition:20220526
     volumes:
-      - "/home/face_recognition/data:/data"
+      - "./face_recognition_data:/data"
+    environment:
+      - APP_ID=CAv7zJJJHGxninFhZfq4uKuZL2uV2UYiFA1bcoKfV3yi
+      - SDK_KEY=3JK6qHZFpLdzzd1xNpjVJugPK2UuYywxBAMkMUTa2FAZ
 
   light_detection:
     image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_light:20220526
+    restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+
+  object_detection:
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_object:20220601
     restart: always
     deploy:
       resources:
@@ -55,7 +67,7 @@ services:
       - bash
       - -c
       - python3 -m paddle_serving_server.serve --model mask_server --port 9396 --gpu_id 0 --thread 32
-  
+
   http_api_service:
     image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_http_api_service:20220526
     environment:
@@ -71,6 +83,7 @@ services:
     depends_on:
       - face_recognition
       - light_detection
+      - object_detection
       - vehicle_detection
       - plate_detection 
       - pedestrian_detection

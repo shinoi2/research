@@ -17,7 +17,6 @@ def mask():
         })
     img = cv2.imencode('.jpg', image)[1].tostring()
     count, results = face_recognition_client.detect(image=img)
-    # results = face_detector.predict(image=image)
     data = []
     mask_count = no_mask_count = 0
     if results:
