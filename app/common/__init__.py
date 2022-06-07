@@ -32,3 +32,14 @@ def get_image_v2(image='image', url='url'):
     except Exception:
         return None
     return None
+
+def get_audio(audio='audio', url='url'):
+    try:
+        if request.files.get(audio) is not None:
+            return request.files[image].read()
+        if request.form.get(url) is not None:
+            with urllib.request.urlopen(request.form.get(url)) as req:
+                return bytearray(req.read())
+    except Exception:
+        return None
+    return None

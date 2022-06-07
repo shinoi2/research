@@ -1,4 +1,3 @@
-import uuid
 from flask import send_file, request, current_app
 from . import v1_bp
 from tts import TTSClient

@@ -1,4 +1,3 @@
-import uuid
 from flask import jsonify, request, current_app
 from common.minio import upload_file
 from . import v2_bp

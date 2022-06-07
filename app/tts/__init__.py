@@ -15,7 +15,7 @@ class TTSClient:
                  spk_id: int=0,
                  speed: float=1.0,
                  volume: float=1.0,
-                 sample_rate: int=8000):
+                 sample_rate: int=16000):
         request = {
             "text": input,
             "spk_id": spk_id,
@@ -31,7 +31,3 @@ class TTSClient:
         samples, sample_rate = soundfile.read(io.BytesIO(audio_data_byte), dtype='float32')
         soundfile.write(outfile, samples, sample_rate)
         return outfile
-
-if __name__ == "__main__":
-    tts_client = TTSClient("127.0.0.1")
-    print(tts_client("你好，朴津智能"))

@@ -4,6 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive TZ=Asia/Shanghai LD_LIBRARY_PATH="$LD_LIBRARY
 
 RUN apt update && \
     apt install -y \
+        ffmpeg \
         libopencv-dev \
         libsndfile1 \
         python3-opencv \
@@ -22,7 +23,9 @@ RUN wget https://paddle-serving.bj.bcebos.com/others/centos_ssl.tar && \
     ln -sf /usr/lib/libssl.so.10 /usr/lib/libssl.so
 
 RUN python3 -m pip install pip --upgrade && \
-    pip install flask \
+    pip install \
+        ffmpeg-python \
+        flask \
         flask-cors \
         gunicorn \
         gevent \
