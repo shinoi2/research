@@ -7,7 +7,7 @@ client = ASRClient()
 @v2_bp.route('/asr', methods=['POST'])
 def asr():
     audio = get_audio()
-    if not text:
+    if audio is None:
         return jsonify({
             "msg": "audio 或 url 参数不存在",
             "code": 1

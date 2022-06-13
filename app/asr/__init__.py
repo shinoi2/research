@@ -1,6 +1,8 @@
 import ffmpeg
 import requests
 import json
+import uuid
+import base64
 
 class ASRClient:
     def __init__(self, host: str="speech_server", port: int=8090):

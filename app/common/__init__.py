@@ -36,7 +36,7 @@ def get_image_v2(image='image', url='url'):
 def get_audio(audio='audio', url='url'):
     try:
         if request.files.get(audio) is not None:
-            return request.files[image].read()
+            return request.files[audio].read()
         if request.form.get(url) is not None:
             with urllib.request.urlopen(request.form.get(url)) as req:
                 return bytearray(req.read())
