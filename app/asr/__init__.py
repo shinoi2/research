@@ -2,9 +2,10 @@ import ffmpeg
 import requests
 import json
 
-class ASRClient(self, host: str="speech_server", port: int=8090):
-    self.asr_url = f'http://{host}:{port}/paddlespeech/asr'
-    self.text_url = f'http://{host}:{port}/paddlespeech/text'
+class ASRClient:
+    def __init__(self, host: str="speech_server", port: int=8090):
+        self.asr_url = f'http://{host}:{port}/paddlespeech/asr'
+        self.text_url = f'http://{host}:{port}/paddlespeech/text'
 
     def __call__(self, audio_bytes):
         wav_file = f"/tmp/{uuid.uuid4()}.wav"

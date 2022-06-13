@@ -7,7 +7,7 @@ v2_bp.register_blueprint(face_bp)
 
 __all__ = [
     "v2_bp",
-    "asr"
+    "asr",
     "light",
     "mask",
     "pedestrian",

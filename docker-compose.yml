@@ -78,7 +78,7 @@ services:
     restart: always
 
   http_api_service:
-    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_http_api_service:20220601
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_http_api_service:20220613
     environment:
       - GRPC_POLL_STRATEGY=poll
     deploy:
