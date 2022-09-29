@@ -1,3 +1,4 @@
+from urllib.error import HTTPError
 from flask import jsonify, request, current_app
 from common import get_audio
 from . import v2_bp
@@ -12,7 +13,18 @@ def asr():
             "msg": "audio 或 url 参数不存在",
             "code": 1
         })
-    text = client(audio)
+    try:
+        text = client(audio)
+    except FileNotFoundError:
+        return jsonify({
+            "msg": "audio 或 url 文件非法",
+            "code": 1
+        })
+    except Exception:
+        return jsonify({
+            "msg": "语音识别失败",
+            "code": 1
+        })
     return jsonify({
         "text": text,
         "msg": "OK",
