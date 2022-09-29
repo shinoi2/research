@@ -1,12 +1,12 @@
 version: "3"
 services:
   face_recognition:
-    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_face_recognition:20220526
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_face_recognition:20220908
     volumes:
       - "./face_recognition_data:/data"
     environment:
-      - APP_ID=CAv7zJJJHGxninFhZfq4uKuZL2uV2UYiFA1bcoKfV3yi
-      - SDK_KEY=3JK6qHZFpLdzzd1xNpjVJugPK2UuYywxBAMkMUTa2FAZ
+      - APP_ID=CKgAe7dHPny4QtqveihhncdKKbUxAJUAVSW8KPeinVvd
+      - SDK_KEY=6H4DCp59KyeNs2vTwXVgzLG1JKY3zhdMtSHiMHBhLBJP
 
   light_detection:
     image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_light:20220526
