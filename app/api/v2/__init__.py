@@ -14,5 +14,6 @@ __all__ = [
     "tts",
     "vehicle",
     "vlpr",
-    "object"
+    "object",
+    "ocr",
 ]

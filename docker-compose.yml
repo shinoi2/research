@@ -1,20 +1,13 @@
 version: "3"
 services:
   face_recognition:
-    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_face_recognition:20220908
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_face_recognition:20230404
+    restart: always
     volumes:
       - "./face_recognition_data:/data"
     environment:
       - APP_ID=CKgAe7dHPny4QtqveihhncdKKbUxAJUAVSW8KPeinVvd
       - SDK_KEY=6H4DCp59KyeNs2vTwXVgzLG1JKY3zhdMtSHiMHBhLBJP
-
-  # face_recognition:
-  #   image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_face_recognition:20220526
-  #   volumes:
-  #     - "./face_recognition_data_pre:/data"
-  #   environment:
-  #     - APP_ID=CAv7zJJJHGxninFhZfq4uKuZL2uV2UYiFA1bcoKfV3yi
-  #     - SDK_KEY=3JK6qHZFpLdzzd1xNpjVJugPK2UuYywxBAMkMUTa2FAZ
 
   light_detection:
     image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_light:20220526
@@ -36,6 +29,7 @@ services:
 
   plate_detection:
     image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_plate:20220526
+    restart: always
 
   vehicle_detection:
     image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_vehicle:20220526
@@ -85,13 +79,19 @@ services:
             - capabilities: [gpu]
     restart: always
 
+  ocr_recongnition:
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_ocr
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    restart: always
+
   http_api_service:
-    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_http_api_service:20220613
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_http_api_service:20230628
     environment:
       - GRPC_POLL_STRATEGY=poll
-    volumes:
-      - "./app/asr/__init__.py:/root/asr/__init__.py"
-      - "./app/api/v2/asr.py:/root/api/v2/asr.py"
     restart: always
     ports:
       - "5000:5000"
@@ -100,31 +100,11 @@ services:
       - light_detection
       - object_detection
       - vehicle_detection
-      - plate_detection 
+      - plate_detection
       - pedestrian_detection
       - mask_detection
       - speech_server
+      - ocr_recongnition
     extra_hosts:
-      - "test.chinapji.com:192.168.66.247" 
-  # http_api_service_pre:
-  #   image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_http_api_service:20220613
-  #   environment:
-  #     - GRPC_POLL_STRATEGY=poll
-  #     - PRE=1
-  #   deploy:
-  #     resources:
-  #       reservations:
-  #         devices:
-  #           - capabilities: [gpu]
-  #   restart: always
-  #   ports:
-  #     - "5000:5000"
-  #   depends_on:
-  #     - face_recognition_pre
-  #     - light_detection
-  #     - object_detection
-  #     - vehicle_detection
-  #     - plate_detection 
-  #     - pedestrian_detection
-  #     - mask_detection
-  #     - speech_server
+      - "test.chinapji.com:192.168.66.247"
+

@@ -9,7 +9,8 @@ RUN apt update && \
         libsndfile1 \
         python3-opencv \
         python3-pip \
-        wget && \
+        wget \
+        libzbar0 && \
     apt clean autoclean && \
     apt autoremove --yes && \
     rm -rf /var/lib/{apt,dpkg,cache,log}/
@@ -34,8 +35,12 @@ RUN python3 -m pip install pip --upgrade && \
         paddle-serving-app==0.8.3 \
         paddle-serving-client==0.8.3 \
         pyopenssl \
-        soundfile
+        soundfile \
+        pyzbar-upright \
+        opencv-contrib-python && \
+    mkdir /root/.local
 
 COPY ./app /root/
+COPY ./javase-3.4.1-SNAPSHOT-jar-with-dependencies.jar /root/.local/
 
 ENTRYPOINT cd /root && gunicorn server:app -c /root/gunicorn/gunicorn.conf.py

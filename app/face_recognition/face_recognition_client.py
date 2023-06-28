@@ -8,10 +8,14 @@ def readfile(image):
 
 is_pre = os.getenv("PRE", 'False').lower() in ('true', '1', 't')
 default_url = 'face_recognition_pre:7552' if is_pre else 'face_recognition:7552'
+MAX_MESSAGE_LENGTH = 16 * 1024 * 1024
 
 class FaceRecognitionClient:
     def __init__(self, url=default_url) -> None:
-        channel = grpc.insecure_channel(url)
+        channel = grpc.insecure_channel(url, options=[
+            ('grpc.max_send_message_length', MAX_MESSAGE_LENGTH),
+            ('grpc.max_receive_message_length', MAX_MESSAGE_LENGTH),
+        ],)
         self.client = face_recognition_pb2_grpc.FaceRecognitionEngineStub(channel)
     
     def search(self, image, repoid):

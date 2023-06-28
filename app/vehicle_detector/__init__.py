@@ -6,7 +6,7 @@ from paddle_serving_app.reader import DetectionSequential, \
     DetectionTranspose
 
 class VehicleDetector:
-    def __init__(self, url="vehicle_detection:9393", thresholds = 0.5):
+    def __init__(self, url="vehicle_detection:9393", thresholds = 0.6):
         self.preprocess = DetectionSequential([
             DetectionResize(
                 (608, 608), False, interpolation=2),

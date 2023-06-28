@@ -1,0 +1,15 @@
+feed_var {
+  name: "x"
+  alias_name: "x"
+  is_lod_tensor: false
+  feed_type: 1
+  shape: 3
+  shape: 48
+}
+fetch_var {
+  name: "softmax_5.tmp_0"
+  alias_name: "softmax_5.tmp_0"
+  is_lod_tensor: false
+  fetch_type: 1
+  shape: 6625
+}
