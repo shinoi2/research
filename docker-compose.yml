@@ -10,13 +10,18 @@ services:
       - SDK_KEY=6H4DCp59KyeNs2vTwXVgzLG1JKY3zhdMtSHiMHBhLBJP
 
   light_detection:
-    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_light:20220526
+    # image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_light:20220526
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_light:20230719
     restart: always
     deploy:
       resources:
         reservations:
           devices:
             - capabilities: [gpu]
+    entrypoint:
+      - bash
+      - -c
+      - python3 -m paddle_serving_server.serve --model light_server --port 9392 --gpu_id 0  --thread 16
 
   object_detection:
     image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_object:20220601
@@ -80,7 +85,7 @@ services:
     restart: always
 
   ocr_recongnition:
-    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_ocr
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_ocr:20230629
     deploy:
       resources:
         reservations:
@@ -89,7 +94,8 @@ services:
     restart: always
 
   http_api_service:
-    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_http_api_service:20230628
+    # image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_http_api_service:20230629
+    image: registry.cn-hangzhou.aliyuncs.com/chinapji/research_http_api_service:20230802
     environment:
       - GRPC_POLL_STRATEGY=poll
     restart: always

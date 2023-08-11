@@ -14,8 +14,8 @@ def tts():
             "msg": "text 参数不存在",
             "code": 1
         })
-    text.replace(" ", "")
-    text.replace("　", "")
+    text = text.replace(" ", "")
+    text = text.replace("　", "")
     if len(text) == 0:
         return jsonify({
             "msg": "text 为空",

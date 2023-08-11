@@ -41,6 +41,5 @@ RUN python3 -m pip install pip --upgrade && \
     mkdir /root/.local
 
 COPY ./app /root/
-COPY ./javase-3.4.1-SNAPSHOT-jar-with-dependencies.jar /root/.local/
 
 ENTRYPOINT cd /root && gunicorn server:app -c /root/gunicorn/gunicorn.conf.py
